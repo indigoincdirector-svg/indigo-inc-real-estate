@@ -79,10 +79,20 @@
         .header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 700;
             letter-spacing: 2px;
             animation: fadeInDown 1s ease;
+        }
+        
+        .owner-name {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            animation: fadeIn 1.2s ease;
         }
         
         .header p {
@@ -113,6 +123,11 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         /* Contact Bar */
@@ -230,11 +245,6 @@
             height: 3px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 2px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
         
         /* Properties Grid */
@@ -484,6 +494,10 @@
                 font-size: 2rem;
             }
             
+            .owner-name {
+                font-size: 0.95rem;
+            }
+            
             .properties-grid {
                 grid-template-columns: 1fr;
             }
@@ -495,16 +509,6 @@
             
             .section-title h2 {
                 font-size: 2rem;
-            }
-        }
-        
-        /* Loading Animation */
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
             }
         }
     </style>
@@ -538,6 +542,7 @@
     
     <div class="header">
         <h1>🏡 INDIGO INC. REAL ESTATE</h1>
+        <div class="owner-name">Siddharth Khubchandani • Ajmer</div>
         <p>Premium Properties • Trusted Service • Dream Homes</p>
     </div>
     
@@ -643,6 +648,7 @@
     
     <div class="footer">
         <p><strong>INDIGO INC. REAL ESTATE</strong></p>
+        <p>Siddharth Khubchandani</p>
         <p>Ajmer, Rajasthan</p>
         <p>📞 9829192353 | ✉️ indigoinc.director@gmail.com</p>
         <p style="margin-top: 1.5rem; opacity: 0.8;">Your Trusted Partner in Finding Dream Properties</p>
