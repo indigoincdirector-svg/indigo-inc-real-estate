@@ -51,6 +51,20 @@
             font-weight: bold;
         }
         
+        .inquiry-banner {
+            background: #28a745;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -204,8 +218,18 @@
             }
         }
     </style>
+    <script>
+        // Auto-open inquiry form after 4 seconds
+        setTimeout(function() {
+            window.open('https://forms.gle/MLW2Q2R3XhopexZq9', '_blank');
+        }, 4000);
+    </script>
 </head>
 <body>
+    <div class="inquiry-banner">
+        📋 Inquiry Form Opening in 4 Seconds... Fill Your Requirements!
+    </div>
+    
     <div class="header">
         <h1>🏡 Indigo Inc. Real Estate</h1>
         <p>Your Trusted Property Partner in Ajmer</p>
@@ -215,6 +239,7 @@
         <a href="tel:9829192353">📞 9829192353</a>
         <a href="mailto:indigoinc.director@gmail.com">✉️ indigoinc.director@gmail.com</a>
         <a href="https://wa.me/919829192353">💬 WhatsApp</a>
+        <a href="https://forms.gle/MLW2Q2R3XhopexZq9" target="_blank" style="background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 5px;">📝 Fill Inquiry Form</a>
     </div>
     
     <div class="container">
