@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indigo Inc. Real Estate - Premium Properties in Ajmer</title>
     <meta name="description" content="Find your dream property in Ajmer with Indigo Inc. Real Estate. Houses, plots, and commercial properties in Vaishali Nagar, Panchsheel, and more.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,199 +14,474 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f4f4f4;
+            color: #2c3e50;
+            background: #ffffff;
+            overflow-x: hidden;
         }
         
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            opacity: 0.3;
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease;
         }
         
         .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
         }
         
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Contact Bar */
         .contact-bar {
-            background: #fff;
-            padding: 1rem;
+            background: #ffffff;
+            padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
         }
         
         .contact-bar a {
-            color: #667eea;
+            color: #1a1a2e;
             text-decoration: none;
             margin: 0 1rem;
-            font-weight: bold;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
         }
         
-        .inquiry-banner {
-            background: #28a745;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
+        .contact-bar a:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            color: #0f3460;
+        }
+        
+        .form-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            padding: 0.7rem 1.5rem !important;
+            border-radius: 30px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            }
         }
         
+        /* Inquiry Banner */
+        .inquiry-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            animation: slideInFromTop 0.8s ease;
+        }
+        
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Container */
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 3rem auto;
             padding: 0 1rem;
         }
         
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Properties Grid */
         .properties-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             margin-top: 2rem;
         }
         
+        /* Property Card */
         .property-card {
-            background: white;
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+            border: 1px solid rgba(0,0,0,0.05);
         }
+        
+        .property-card:nth-child(1) { animation-delay: 0.1s; }
+        .property-card:nth-child(2) { animation-delay: 0.2s; }
+        .property-card:nth-child(3) { animation-delay: 0.3s; }
         
         .property-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
         
+        /* Property Header */
         .property-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
-            padding: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .property-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -20px); }
         }
         
         .property-id {
             font-size: 0.9rem;
             opacity: 0.9;
             margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
         
         .property-location {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 0.3rem;
         }
         
         .property-type {
             font-size: 1rem;
             opacity: 0.9;
+            font-weight: 300;
         }
         
+        /* Property Body */
         .property-body {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
-        .property-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .detail-item {
-            padding: 0.8rem;
-            background: #f8f9fa;
-            border-radius: 5px;
-        }
-        
-        .detail-label {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 0.3rem;
-        }
-        
-        .detail-value {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #333;
-        }
-        
+        /* Price Section */
         .price-section {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 1rem;
-            border-radius: 5px;
+            padding: 1.5rem;
+            border-radius: 15px;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .price-section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
         }
         
         .price {
-            font-size: 2rem;
-            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 0.3rem;
         }
         
         .price-per-unit {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
         
+        /* Property Details */
+        .property-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-item {
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .detail-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        /* Status Badge */
         .status-badge {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: #28a745;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
-            border-radius: 20px;
+            border-radius: 25px;
             font-size: 0.9rem;
-            font-weight: bold;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            animation: glow 2s ease-in-out infinite;
         }
         
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(40, 167, 69, 0.6);
+            }
+        }
+        
+        /* CTA Button */
         .cta-button {
             display: block;
             width: 100%;
-            padding: 1rem;
-            background: #667eea;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             color: white;
             text-align: center;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            border-radius: 12px;
+            font-weight: 600;
             font-size: 1.1rem;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(26, 26, 46, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .cta-button:hover {
-            background: #764ba2;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(26, 26, 46, 0.4);
         }
         
+        /* Footer */
         .footer {
-            background: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
         }
         
         .footer p {
             margin-bottom: 0.5rem;
+            font-weight: 300;
         }
         
+        .footer strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .properties-grid {
@@ -216,6 +492,20 @@
                 display: block;
                 margin: 0.5rem 0;
             }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
         }
     </style>
     <script>
@@ -223,27 +513,46 @@
         setTimeout(function() {
             window.open('https://forms.gle/MLW2Q2R3XhopexZq9', '_blank');
         }, 4000);
+        
+        // Smooth scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>
+    <div class="bg-animation"></div>
+    
     <div class="inquiry-banner">
-        📋 Inquiry Form Opening in 4 Seconds... Fill Your Requirements!
+        ✨ Inquiry Form Opening in 4 Seconds... Share Your Requirements! ✨
     </div>
     
     <div class="header">
-        <h1>🏡 Indigo Inc. Real Estate</h1>
-        <p>Your Trusted Property Partner in Ajmer</p>
+        <h1>🏡 INDIGO INC. REAL ESTATE</h1>
+        <p>Premium Properties • Trusted Service • Dream Homes</p>
     </div>
     
     <div class="contact-bar">
         <a href="tel:9829192353">📞 9829192353</a>
-        <a href="mailto:indigoinc.director@gmail.com">✉️ indigoinc.director@gmail.com</a>
+        <a href="mailto:indigoinc.director@gmail.com">✉️ Email Us</a>
         <a href="https://wa.me/919829192353">💬 WhatsApp</a>
-        <a href="https://forms.gle/MLW2Q2R3XhopexZq9" target="_blank" style="background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 5px;">📝 Fill Inquiry Form</a>
+        <a href="https://forms.gle/MLW2Q2R3XhopexZq9" target="_blank" class="form-button">📝 Inquiry Form</a>
     </div>
     
     <div class="container">
-        <h2 style="text-align: center; margin-bottom: 1rem; color: #667eea;">Featured Properties</h2>
+        <div class="section-title">
+            <h2>Featured Properties</h2>
+            <p style="color: #6c757d; margin-top: 1rem;">Discover Your Perfect Property in Ajmer</p>
+        </div>
         
         <div class="properties-grid">
             <!-- Property 1 -->
@@ -251,7 +560,7 @@
                 <div class="property-header">
                     <div class="property-id">IND-001</div>
                     <div class="property-location">Vaishali Nagar</div>
-                    <div class="property-type">Choudhary Colony • House</div>
+                    <div class="property-type">Choudhary Colony • Luxury House</div>
                 </div>
                 <div class="property-body">
                     <div class="price-section">
@@ -279,7 +588,7 @@
                 <div class="property-header">
                     <div class="property-id">IND-002</div>
                     <div class="property-location">Panchsheel</div>
-                    <div class="property-type">House</div>
+                    <div class="property-type">Premium House</div>
                 </div>
                 <div class="property-body">
                     <div class="price-section">
@@ -307,7 +616,7 @@
                 <div class="property-header">
                     <div class="property-id">IND-003</div>
                     <div class="property-location">Vaishali Nagar</div>
-                    <div class="property-type">Friends Colony • Plot</div>
+                    <div class="property-type">Friends Colony • Prime Plot</div>
                 </div>
                 <div class="property-body">
                     <div class="price-section">
@@ -333,10 +642,11 @@
     </div>
     
     <div class="footer">
-        <p><strong>Indigo Inc. Real Estate</strong></p>
+        <p><strong>INDIGO INC. REAL ESTATE</strong></p>
         <p>Ajmer, Rajasthan</p>
         <p>📞 9829192353 | ✉️ indigoinc.director@gmail.com</p>
-        <p style="margin-top: 1rem; opacity: 0.7;">© 2026 Indigo Inc. Real Estate. All rights reserved.</p>
+        <p style="margin-top: 1.5rem; opacity: 0.8;">Your Trusted Partner in Finding Dream Properties</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">© 2026 Indigo Inc. Real Estate. All rights reserved.</p>
     </div>
 </body>
 </html>
